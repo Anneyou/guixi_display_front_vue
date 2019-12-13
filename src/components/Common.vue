@@ -88,8 +88,4 @@ export default {
   justify-content: space-between;
   margin-right: .4rem;
 }
-
-.community-home-body-item:nth-child(4n) {
-  margin-right: 0;
-}
 </style>
