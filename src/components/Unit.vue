@@ -12,22 +12,10 @@
         <div class="room-table">
           <div class="datable-table-container">
             <div class="fixed-table">
-              <div class="fixed-table-header">
-                <table class="normal-table">
-                  <colgroup>
-                    <col width="64.9">
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th></th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
               <div class="scroll-container" @scroll="scrollFixed" ref="fixedScrollContainer">
                 <table>
                   <colgroup>
-                    <col width="64.9">
+                    <col width="10">
                   </colgroup>
                   <tbody>
                     <template v-for="(item, index) in floors">
@@ -41,39 +29,26 @@
             </div>
             <div class="body-table">
               <div class="body-table-wrapper">
-                <div class="fixed-table-header" @scroll="scrollX" ref="bodyFixedHeader">
-                  <table>
-                    <colgroup>
-                      <template v-for="(room, index) in houses">
-                        <col :key="index" width="38.35">
-                      </template>
-                    </colgroup>
-                    <thead>
-                      <tr>
-                        <template v-for="(room, index) in houses">
-                          <th :key="index">
-                            <div>{{ getRoom(index + 1) }}</div>
-                          </th>
-                        </template>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
                 <div class="scroll-container" @scroll="scrollBody" ref="bodyScrollContainer">
                   <table>
                     <colgroup>
+                      <col width="10">
                       <template v-for="(room, index) in houses">
-                        <col :key="index" width="38.35">
+                        <col :key="index" width="30">
                       </template>
                     </colgroup>
                     <tbody>
                       <template v-for="(floor, index) in floors">
                         <tr :key="index">
+                          <td>
+                            <span>{{ floor.floor }}楼</span>
+                          </td>
                           <template v-for="(room, index) in floor.data">
                             <td :key="index">
-                              <div>
+                              <span>
+                                <span>{{room.room}}号</span>
                                 <i :class="getStatusClass(room.status)"></i>
-                              </div>
+                              </span>
                             </td>
                           </template>
                         </tr>
@@ -232,7 +207,7 @@ export default {
 
 .room-table {
   flex: 1;
-  padding: 0 1rem .5rem;
+  padding: 0 1rem .2rem;
   background-color: white;
   width: 100%;
   border-radius: .3rem;
@@ -245,6 +220,7 @@ export default {
   display: flex;
   overflow: hidden;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .fixed-table {
@@ -261,7 +237,6 @@ export default {
 .scroll-container {
   border-top: 1px solid #E9EAEB;
   border-bottom: 1px solid #E9EAEB;
-  margin-bottom: -1px;
 }
 
 .fixed-table > .scroll-container {
@@ -319,19 +294,24 @@ tr:last-child {
   border-bottom: none;
 }
 
-th {
-  color: #95a4b3;
-  font-size: .6rem;
-  line-height: 1.5;
-}
-
-th, td {
+td {
   height: 2.25rem;
   padding-left: .4rem;
-  text-align: left;
+  text-align: center;
 }
 
-.column-first {
+td>span {
+  display: flex;
+  flex-direction: row;
+  color: #95a4b3;
+  font-size: 12px;
+}
+
+td i {
+  margin-left: 5px;
+}
+
+td:first-child {
   font-size: .6rem;
   color: #8d8d8d;
 }
