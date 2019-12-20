@@ -70,6 +70,19 @@ export default {
   margin-right: -3%;
 }
 
+.community-home-body-item {
+  height: 4.8rem;
+  width: 22%;
+  background-color: white;
+  padding: .6rem .4rem .4rem;
+  box-sizing: border-box;
+  border-radius: .3rem;
+  margin-bottom: .4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .icon-icon_dong {
   background-image: linear-gradient(to right,#f08200, #f45e06);
   -webkit-background-clip: text;
