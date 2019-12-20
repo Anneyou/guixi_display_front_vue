@@ -77,7 +77,7 @@ export default {
 
 .community-home-body-item {
   height: 4.8rem;
-  width: 3.8rem;
+  width: 24%;
   background-color: white;
   padding: .6rem .4rem .4rem;
   box-sizing: border-box;
@@ -86,6 +86,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: .4rem;
+  margin-right: 1%;
 }
 </style>
