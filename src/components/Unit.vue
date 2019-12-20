@@ -232,7 +232,7 @@ export default {
 
 .room-table {
   flex: 1;
-  padding: 0 1rem 1rem;
+  padding: 0 1rem .5rem;
   background-color: white;
   width: 100%;
   border-radius: .3rem;
@@ -256,6 +256,12 @@ export default {
 
 .normal-table {
   width: 3.245rem;
+}
+
+.scroll-container {
+  border-top: 1px solid #E9EAEB;
+  border-bottom: 1px solid #E9EAEB;
+  margin-bottom: -1px;
 }
 
 .fixed-table > .scroll-container {
@@ -307,6 +313,10 @@ table {
 
 tr {
   border-bottom: 1px solid #E9EAEB;
+}
+
+tr:last-child {
+  border-bottom: none;
 }
 
 th {
