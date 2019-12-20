@@ -102,7 +102,7 @@
         <button class="error-correction-button" @click="openModal">纠错</button>
       </template>
     </Common>
-    <Modal :company="baseCompany"
+    <Modal company="智慧桂溪"
            extendClass="tip-modal"
            ref="modalRef" ></Modal>
   </div>
