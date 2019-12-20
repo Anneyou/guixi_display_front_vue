@@ -52,7 +52,7 @@
                       <tr>
                         <template v-for="(room, index) in houses">
                           <th :key="index">
-                            <div>{{ getRoom(Number(room.room)) }}</div>
+                            <div>{{ getRoom(index + 1) }}</div>
                           </th>
                         </template>
                       </tr>
