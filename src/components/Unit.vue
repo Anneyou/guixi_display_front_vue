@@ -280,6 +280,7 @@ export default {
   width: 100%;
   flex: 1;
   overflow: auto;
+  padding-right: .5rem;
 }
 
 table {
