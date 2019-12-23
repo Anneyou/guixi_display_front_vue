@@ -283,6 +283,10 @@ export default {
   padding-right: .5rem;
 }
 
+.body-table-wrapper > .scroll-container::-webkit-scrollbar {
+  display: block;
+}
+
 table {
   table-layout: fixed;
   border-collapse: collapse;
