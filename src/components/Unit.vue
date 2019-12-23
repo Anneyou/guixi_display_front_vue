@@ -43,7 +43,7 @@
                           <template v-for="(room, index) in floor.data">
                             <td :key="index">
                               <span>
-                                <span>{{room.room}}号</span>
+                                <span>{{room.room}}</span>
                                 <i :class="getStatusClass(room.status)"></i>
                               </span>
                             </td>
