@@ -249,6 +249,7 @@ export default {
 
 .fixed-table > .scroll-container::-webkit-scrollbar {
   width: 0 !important;
+  display: none;
 }
 
 .fixed-table > .scroll-container td {
@@ -284,7 +285,7 @@ export default {
 }
 
 .body-table-wrapper > .scroll-container::-webkit-scrollbar {
-  visibility: visible;
+  display: block;
 }
 
 table {

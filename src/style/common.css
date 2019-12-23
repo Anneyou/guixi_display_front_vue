@@ -8,11 +8,6 @@ html, body, p {
   padding: 0;
 }
 
-::-webkit-scrollbar {
-  width: 0 !important;
-  visibility: hidden;
-}
-
 a {
   text-decoration: none;
 }
