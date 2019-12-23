@@ -1,4 +1,3 @@
-<script>
 import parseQueryString from '@/router/parse_query'
 
 export default {
@@ -22,8 +21,3 @@ export default {
     }
   }
 }
-</script>
-
-<style>
-
-</style>

@@ -3,9 +3,8 @@
     <slot name="header"></slot>
     <slot name="content">
       <div class="content" @click.stop>
-        <p>请关注公众号【{{ company }}】</p>
-        <p>为了后期接受到纠错结果消息</p>
-        <p>请不要取关公众号</p>
+        <p>请关注微信公众号【{{ company }}】</p>
+        <p>以便接收纠错反馈。</p>
       </div>
     </slot>
     <slot name="footer"></slot>
