@@ -24,20 +24,6 @@
                   </thead>
                 </table>
               </div>
-              <div class="scroll-container" @scroll="scrollFixed" ref="fixedScrollContainer">
-                <table>
-                  <colgroup>
-                    <col width="64.9">
-                  </colgroup>
-                  <tbody>
-                    <template v-for="(item, index) in floors">
-                        <tr :key="index">
-                          <td class="column-first">{{ item.floor}}楼</td>
-                        </tr>
-                      </template>
-                  </tbody>
-                </table>
-              </div>
             </div>
             <div class="body-table">
               <div class="body-table-wrapper">
