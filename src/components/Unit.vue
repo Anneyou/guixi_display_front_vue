@@ -24,19 +24,33 @@
                   </thead>
                 </table>
               </div>
+              <div class="scroll-container" @scroll="scrollFixed" ref="fixedScrollContainer">
+                <table>
+                  <colgroup>
+                    <col width="64.9">
+                  </colgroup>
+                  <tbody>
+                    <template v-for="(item, index) in floors">
+                        <tr :key="index">
+                          <td class="column-first">{{ item.floor}}楼</td>
+                        </tr>
+                      </template>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div class="body-table">
               <div class="body-table-wrapper">
                 <div class="fixed-table-header" @scroll="scrollX" ref="bodyFixedHeader">
                   <table>
                     <colgroup>
-                      <template v-for="(room, index) in houses">
+                      <template v-for="(room, index) in houses" v-if="index !== 0">
                         <col :key="index" width="38.35">
                       </template>
                     </colgroup>
                     <thead>
                       <tr>
-                        <template v-for="(room, index) in houses">
+                        <template v-for="(room, index) in houses" v-if="index !== 0">
                           <th :key="index">
                             <div>{{ getRoom(Number(room.room)) }}</div>
                           </th>
