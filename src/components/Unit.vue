@@ -305,6 +305,7 @@ th, td {
   height: 2.25rem;
   padding-left: .4rem;
   text-align: left;
+  white-space: nowrap;
 }
 
 .column-first {
