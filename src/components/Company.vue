@@ -118,7 +118,7 @@ export default {
 
 .company-body > .title {
   height: 2.25rem;
-  font-size: .6rem;
+  font-size: .7rem;
   color: #95a4b3;
   line-height: 1.5;
   border-bottom: .05rem solid #e9eaeb;
