@@ -284,7 +284,7 @@ export default {
 }
 
 .body-table-wrapper > .scroll-container::-webkit-scrollbar {
-  display: block;
+  visibility: visible;
 }
 
 table {
