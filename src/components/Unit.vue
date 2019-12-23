@@ -254,6 +254,10 @@ export default {
   width: 3.245rem;
 }
 
+.fixed-table table {
+  width: 100%;
+}
+
 .normal-table {
   width: 3.245rem;
 }
