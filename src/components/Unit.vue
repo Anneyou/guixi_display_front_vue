@@ -375,6 +375,8 @@ td:first-child {
   display: flex;
   justify-content: center;
   background-color: #f2f4f6;
+  flex: 0 0 46px;
+  align-items: center;
 }
 
 .legend-item {
@@ -383,6 +385,7 @@ td:first-child {
   padding: .6rem 0;
   margin-right: 1.2rem;
   vertical-align: middle;
+  height: 2rem;
 }
 
 .legend-item:nth-child(3) {
