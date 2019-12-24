@@ -106,6 +106,7 @@ export default {
   created () {
     this.doRequest()
     document.title = '出租房屋公示'
+    document.body.addEventListener('touchmove', this._stopIosRubber, {passive: false})
   },
 
   methods: {
@@ -176,7 +177,15 @@ export default {
       setTimeout(() => {
         location.href = this.redirectUrl
       }, 3000)
+    },
+
+    _stopIosRubber (event) {
+      event.preventDefault()
     }
+  },
+
+  destroyed () {
+    document.body.removeEventListener('touchmove', this._stopIosRubber, {passive: false})
   }
 }
 </script>
@@ -238,6 +247,7 @@ export default {
 .scroll-container {
   border-top: 1px solid #E9EAEB;
   border-bottom: 1px solid #E9EAEB;
+  -webkit-overflow-scrolling: touch;
 }
 
 .fixed-table > .scroll-container {
