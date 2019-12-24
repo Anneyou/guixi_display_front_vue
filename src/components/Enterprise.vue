@@ -84,6 +84,7 @@ export default {
 
   created () {
     this.doRequst()
+    document.title = '一牌一簿'
   },
 
   methods: {

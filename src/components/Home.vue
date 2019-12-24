@@ -37,11 +37,12 @@ export default {
   components: { Common },
 
   created () {
-    this.doRequst()
+    this.doRequest()
+    document.title = '出租房屋公示'
   },
 
   methods: {
-    doRequst () {
+    doRequest () {
       axios.get(this.baseUrl + 'home?' + this.getQueryString())
         .then(res => {
           this.home = res.data.home

@@ -42,6 +42,7 @@ export default {
 
   created () {
     this.doRequst()
+    document.title = '出租房屋公示'
   },
 
   methods: {
