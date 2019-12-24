@@ -14,30 +14,11 @@ export default {
   data () {
     return {
       url: localStorage.getItem('company'),
-      doRequestQueryString: `company=${this.getQueryValue()}`,
-      code: '',
-      authorize: false
+      code: ''
     }
   },
 
-  created () {
-    this.doRequst()
-  },
-
   methods: {
-    doRequst () {
-      axios.get(this.baseUrl + 'company?' + this.doRequestQueryString)
-        .then(res => {
-          this.information = res.data.result[0] || {}
-          localStorage.setItem('company', this.getQueryValue())
-          localStorage.setItem('company_url', location.href.replace(/company/, 'authorized'))
-          this.authorize = this.parseStringToObject(this.getQueryString()).authorize
-          if (!this.authorize) {
-            location.href = `${res.data.authorizedRedirectUrl}/oauth/authorize?client_id=${res.data.clientId}&response_type=code&key=value&redirect_uri=${location.origin}/guixi_app/authorized`
-          }
-        })
-        .catch(err => { console.log(err) })
-    },
     goToUrlFunc () {
       this.code = this.parseStringToObject(this.getQueryString()).code
       axios.get(this.baseUrl + 'authorized?code=' + this.code)
@@ -45,16 +26,6 @@ export default {
           let authorize = this.getAuthorizeFunc(res.data)
           location.href = localStorage.getItem('company_url') + '&authorize=' + authorize
         })
-    },
-    getQueryValue () {
-      return this.parseStringToObject(this.getRequestQueryString()).company
-    },
-    getRequestQueryString () {
-      var object = this.parseStringToObject(this.getQueryString())
-      if (object.code) {
-        delete object.code
-      }
-      return Object.keys(object).map(function (key) { return `${key}=${object[key]}` }).join('=')
     },
     parseStringToObject (string) {
       var params = {}

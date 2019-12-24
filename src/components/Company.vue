@@ -28,6 +28,7 @@
 
 <script>
 import Common from './Common'
+import axios from 'axios'
 import Mixin from './Mixin'
 
 export default {
@@ -37,19 +38,61 @@ export default {
 
   data () {
     return {
-      information: {}
+      information: {},
+      doRequestQueryString: `company=${this.getQueryValue()}`,
+      authorize: false
     }
   },
 
   components: { Common },
 
   created () {
+    this.athorizedFunc()
+    this.doRequst()
     document.title = '一牌一簿'
   },
 
   computed: {
     showButton () {
       return this.authorize === 'true'
+    }
+  },
+
+  methods: {
+    doRequst () {
+      axios.get(this.baseUrl + 'company?' + this.doRequestQueryString)
+        .then(res => {
+          this.information = res.data.result[0] || {}
+          localStorage.setItem('company', this.getQueryValue())
+          localStorage.setItem('company_url', location.href)
+          this.authorize = this.parseStringToObject(this.getQueryString()).authorize
+          if (!this.authorize) {
+            location.href = `${res.data.authorizedRedirectUrl}/oauth/authorize?client_id=${res.data.clientId}&response_type=code&key=value&redirect_uri=${location.origin}/guixi_app/authorized`
+          }
+        })
+        .catch(err => { console.log(err) })
+    },
+    athorizedFunc () {
+
+    },
+    getRequestQueryString () {
+      var object = this.parseStringToObject(this.getQueryString())
+      if (object.code) {
+        delete object.code
+      }
+      return Object.keys(object).map(function (key) { return `${key}=${object[key]}` }).join('=')
+    },
+    parseStringToObject (string) {
+      var params = {}
+      var arr = string.split('&')
+      for (var i = 0, l = arr.length; i < l; i++) {
+        var a = arr[i].split('=')
+        params[a[0]] = a[1]
+      }
+      return params
+    },
+    getQueryValue () {
+      return this.parseStringToObject(this.getRequestQueryString()).company
     }
   }
 }
