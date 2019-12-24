@@ -35,14 +35,14 @@ export default new Router({
       component: Unit
     },
     {
-      name: 'Company',
+      name: 'Authorized',
       path: '/guixi_app/company',
-      component: Company
+      component: Authorized
     },
     {
-      name: 'Authorized',
+      name: 'Company',
       path: '/guixi_app/authorized',
-      component: Authorized
+      component: Company
     },
     {
       name: 'Enterprise',
