@@ -32,7 +32,6 @@
                 <div class="scroll-container" @scroll="scrollBody" ref="bodyScrollContainer">
                   <table>
                     <colgroup>
-                      <col width="10">
                       <template v-for="(room, index) in houses">
                         <col :key="index" width="30">
                       </template>
@@ -281,7 +280,10 @@ export default {
   width: 100%;
   flex: 1;
   overflow: auto;
-  padding-right: .5rem;
+}
+
+.body-table-wrapper > .scroll-container table {
+  width: 100%;
 }
 
 .body-table-wrapper > .scroll-container::-webkit-scrollbar {
