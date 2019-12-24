@@ -49,6 +49,7 @@ export default {
   created () {
     this.athorizedFunc()
     this.doRequst()
+    document.title = '一牌一簿'
   },
 
   computed: {
