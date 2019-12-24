@@ -326,10 +326,6 @@ td .room-number {
   margin-bottom: .4rem;
 }
 
-td i {
-  margin-left: 5px;
-}
-
 td:first-child {
   font-size: .6rem;
   color: #8d8d8d;
