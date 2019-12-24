@@ -149,10 +149,6 @@ export default {
       this.syncScrollTop(this.$refs.fixedScrollContainer, this.$refs.bodyScrollContainer)
     },
 
-    scrollX (e) {
-      this.$refs.bodyScrollContainer.scrollLeft = this.refs.bodyFixedHeader.scrollLeft
-    },
-
     scrollBody (e) {
       if (this.ignoreScrollEvent) {
         this.ignoreScrollEvent = false
@@ -160,10 +156,9 @@ export default {
       }
       this.updateScrollTop(this.$refs.bodyScrollContainer, this.$refs.fixedScrollContainer)
       this.syncScrollTop(this.$refs.fixedScrollContainer, this.$refs.bodyScrollContainer)
-      this.$refs.bodyFixedHeader.scrollLeft = this.$refs.bodyScrollContainer.scrollLeft
     },
 
-    syncScrollTop: _.debounce(function syncScrollTop(target, relate) {
+    syncScrollTop: _.debounce(function syncScrollTop (target, relate) {
       this.updateScrollTop(target, relate)
     }, 100),
 
