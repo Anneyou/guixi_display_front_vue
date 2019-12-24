@@ -18,6 +18,10 @@ export default {
     }
   },
 
+  created () {
+    document.title = '一牌一簿'
+  },
+
   methods: {
     goToUrlFunc () {
       this.code = this.parseStringToObject(this.getQueryString()).code
