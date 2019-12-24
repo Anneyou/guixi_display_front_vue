@@ -26,7 +26,8 @@ export default {
   methods: {
     getIcon () {
       let icon = ''
-      switch (this.fileName.split('.')[1]) {
+      const fileNameArray = this.fileName.split('.')
+      switch (fileNameArray[fileNameArray.length - 1]) {
         case 'xlsx':
           icon = 'icon-Icon_excel'
           break
