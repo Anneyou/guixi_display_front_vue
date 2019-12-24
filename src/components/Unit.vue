@@ -204,7 +204,6 @@ export default {
 
 .room-table {
   flex: 1;
-  padding: 0 1rem .2rem;
   background-color: white;
   width: 100%;
   border-radius: .3rem;
@@ -218,6 +217,7 @@ export default {
   overflow: hidden;
   justify-content: center;
   margin-top: 1rem;
+  padding: 0 1rem;
 }
 
 .fixed-table {
@@ -366,6 +366,7 @@ td:first-child {
 .table-legend {
   display: flex;
   justify-content: center;
+  background-color: #f2f4f6;
 }
 
 .legend-item {
