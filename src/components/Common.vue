@@ -72,7 +72,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  padding-top: 1.4rem;
+  padding-top: 1.2rem;
 }
 
 .community-home-body-item {
