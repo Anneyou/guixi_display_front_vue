@@ -163,7 +163,7 @@ export default {
       this.$refs.bodyFixedHeader.scrollLeft = this.$refs.bodyScrollContainer.scrollLeft
     },
 
-    syncScrollTop: _.debounce((target, relate) => {
+    syncScrollTop: _.debounce(function syncScrollTop(target, relate) {
       this.updateScrollTop(target, relate)
     }, 100),
 
