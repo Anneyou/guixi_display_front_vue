@@ -1,5 +1,5 @@
 <template>
-  <Common :companyName="baseCompany">
+  <Common :companyName="baseCompany" v-if="authorize">
     <template slot="communityBreadcrumns">
       <div class="description">{{ baseDescription }}</div>
     </template>
