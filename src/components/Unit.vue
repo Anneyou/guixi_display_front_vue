@@ -43,7 +43,7 @@
                           <template v-for="(room, index) in floor.data">
                             <td :key="index">
                               <span>
-                                <span>{{room.room}}</span>
+                                <span class="room-number">{{room.room}}</span>
                                 <i :class="getStatusClass(room.status)"></i>
                               </span>
                             </td>
@@ -302,7 +302,7 @@ tr:last-child {
 }
 
 td {
-  height: 2.25rem;
+  height: 2.75rem;;
   padding-left: .4rem;
   text-align: left;
   white-space: nowrap;
@@ -316,6 +316,11 @@ td>span {
   font-size: 12px;
   display: flex;
   align-items: center;
+  flex-direction: column;
+}
+
+td .room-number {
+  margin-bottom: .4rem;
 }
 
 td i {
