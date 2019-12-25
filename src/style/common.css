@@ -1,6 +1,7 @@
 html, body {
   font-size: 20px;
   height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 html, body, p {

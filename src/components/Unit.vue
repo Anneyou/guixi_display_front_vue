@@ -175,7 +175,21 @@ export default {
     },
 
     _stopIosRubber (event) {
-      event.preventDefault()
+      if (event) {
+        if (!this._hasParent(event.target, 'scroll-container')) {
+          event.preventDefault()
+        }
+      }
+    },
+
+    _hasParent (element, parentClass) {
+      while (element !== document.body) {
+        if (element.classList.contains(parentClass)) {
+          return true
+        }
+        element = element.parentNode
+      }
+      return false
     }
   },
 
@@ -242,7 +256,6 @@ export default {
 .scroll-container {
   border-top: 1px solid #E9EAEB;
   border-bottom: 1px solid #E9EAEB;
-  -webkit-overflow-scrolling: touch;
 }
 
 .fixed-table > .scroll-container {
