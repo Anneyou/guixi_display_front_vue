@@ -106,7 +106,7 @@ export default {
   created () {
     this.doRequest()
     document.title = '出租房屋公示'
-    document.body.addEventListener('touchmove', this._stopIosRubber, {capture: false, passive: false})
+    document.body.addEventListener('touchmove', this._stopIosRubber, {passive: false})
   },
 
   methods: {
@@ -175,8 +175,22 @@ export default {
     },
 
     _stopIosRubber (event) {
-      event.preventDefault()
+      if (event) {
+        if (!this._hasParent(event.target, 'scroll-container')) {
+          event.preventDefault()
+        }
+      }
     },
+
+    _hasParent (element, parentClass) {
+      while (element !== document.body) {
+        if (element.classList.contains(parentClass)) {
+          return true
+        }
+        element = element.parentNode
+      }
+      return false
+    }
   },
 
   destroyed () {
