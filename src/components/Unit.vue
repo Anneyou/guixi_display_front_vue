@@ -99,14 +99,14 @@ export default {
       floors: [],
       houses: [],
       redirectUrl: '',
-      ignoreScrollEvent: false
+      ignoreScrollEvent: false,
+      startY: 0
     }
   },
 
   created () {
     this.doRequest()
     document.title = '出租房屋公示'
-    document.body.addEventListener('touchmove', this._stopIosRubber, {passive: false})
   },
 
   methods: {
@@ -174,27 +174,29 @@ export default {
       }, 3000)
     },
 
-    _stopIosRubber (event) {
-      if (event) {
-        if (!this._hasParent(event.target, 'scroll-container')) {
-          event.preventDefault()
-        }
-      }
+    touchEvents () {
+      document.body.addEventListener('touchstart', (e) => {
+        this.startY = e.touches[0].pageY
+      })
+      document.body.addEventListener('touchmove', this._stopIosRubber, {passive: false})
     },
 
-    _hasParent (element, parentClass) {
-      while (element !== document.body) {
-        if (element.classList.contains(parentClass)) {
-          return true
-        }
-        element = element.parentNode
+    _stopIosRubber (event) {
+      endY = event.touches[0].pageY
+      if (endY > this.startY && window.scrollTop <= 0) {
+        e.preventDefault()
       }
-      return false
-    }
+      if (endY < this.startY && (window.scrollTop + window.innerHeight) >= document.body.scrollHeight) {
+        e.preventDefault()
+      }
+    },
   },
 
   destroyed () {
-    document.body.removeEventListener('touchmove', this._stopIosRubber, {capture: false, passive: false})
+    document.body.removeEventListener('touchmove', this._stopIosRubber, {passive: false})
+    document.body.removeEventListener('touchstart', (e) => {
+      this.startY = e.touches[0].pageY
+    })
   }
 }
 </script>
