@@ -1,5 +1,5 @@
 <template>
-  <a :href="responseUrl" @click="fileClickedFunc">
+  <a @click="fileClickedFunc">
     <i class="file-icon" :class="file.icon"></i>
   </a>
 </template>
