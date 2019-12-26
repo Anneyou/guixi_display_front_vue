@@ -1,5 +1,5 @@
 <template>
-  <a :href="responseUrl">
+  <a :href="responseUrl" @click="fileClickedFunc">
     <i class="file-icon" :class="file.icon"></i>
   </a>
 </template>
@@ -50,6 +50,10 @@ export default {
           icon = 'icon-Icon_file'
       }
       return icon
+    },
+
+    fileClickedFunc () {
+      this.$emit('fileClicked', this.fileName)
     }
   }
 

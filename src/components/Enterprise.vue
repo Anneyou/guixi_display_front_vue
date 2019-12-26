@@ -15,7 +15,8 @@
             <div class="right-body" >
               <File v-if="information.public_security_responsibility_letter"
                     :fileName="information.public_security_responsibility_letter"
-                    :responseUrl="responseUrl" />
+                    :responseUrl="responseUrl"
+                    @fileClicked="fileClickedFunc" />
             </div>
           </div>
           <div class="list-item">
@@ -26,7 +27,8 @@
             <div class="right-body">
               <File v-if="information.roster"
                     :fileName="information.roster"
-                    :responseUrl="responseUrl" />
+                    :responseUrl="responseUrl"
+                    @fileClicked="fileClickedFunc" />
             </div>
           </div>
           <div class="list-item">
@@ -34,7 +36,8 @@
             <div class="right-body">
               <File v-if="information.registration_form"
                     :fileName="information.registration_form"
-                    :responseUrl="responseUrl" />
+                    :responseUrl="responseUrl"
+                    @fileClicked="fileClickedFunc" />
             </div>
           </div>
           <div class="list-item">
@@ -42,7 +45,8 @@
             <div class="right-body">
               <File v-if="information.work_unit_questionnaire"
                     :fileName="information.work_unit_questionnaire"
-                    :responseUrl="responseUrl" />
+                    :responseUrl="responseUrl"
+                    @fileClicked="fileClickedFunc" />
              </div>
           </div>
           <div class="list-item">
@@ -50,7 +54,8 @@
             <div class="right-body">
               <File v-if="information.grid_work_traces"
                     :fileName="information.grid_work_traces"
-                    :responseUrl="responseUrl"  />
+                    :responseUrl="responseUrl"
+                    @fileClicked="fileClickedFunc"  />
             </div>
           </div>
         </div>
@@ -60,6 +65,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import Common from './Common'
 import axios from 'axios'
 import Mixin from './Mixin'
@@ -76,7 +82,8 @@ export default {
       information: {},
       responseUrl: '',
       companyQueryUrl: '',
-      updateUrl: ''
+      updateUrl: '',
+      response: {}
     }
   },
 
@@ -102,6 +109,12 @@ export default {
     },
     goToUrl (url) {
       location.href = url
+    },
+
+    fileClickedFunc (fileName) {
+      axios.get(`https://gxzh.cdht.gov.cn/api/v4/form/${this.information.form_id}/responses`).then(res => {
+        this.response = _.filter(res.data, item => item.id === this.information.response_id)
+      })
     }
   }
 }
