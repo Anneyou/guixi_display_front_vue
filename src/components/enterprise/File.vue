@@ -37,6 +37,9 @@ export default {
         case 'jpg':
           icon = 'icon-icon_image'
           break
+        case 'jpeg':
+          icon = 'icon-icon_image'
+          break
         case 'png':
           icon = 'icon-icon_image'
           break
