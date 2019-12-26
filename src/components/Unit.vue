@@ -182,14 +182,14 @@ export default {
     },
 
     _stopIosRubber (event) {
-      endY = event.touches[0].pageY
+      const endY = event.touches[0].pageY
       if (endY > this.startY && window.scrollTop <= 0) {
-        e.preventDefault()
+        event.preventDefault()
       }
       if (endY < this.startY && (window.scrollTop + window.innerHeight) >= document.body.scrollHeight) {
-        e.preventDefault()
+        event.preventDefault()
       }
-    },
+    }
   },
 
   destroyed () {
