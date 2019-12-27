@@ -112,7 +112,7 @@ export default {
     },
 
     fileClickedFunc (fileName) {
-      axios.get(`https://gxzh.cdht.gov.cn/api/v4/form/${this.information.form_id}/responses`).then(res => {
+      axios.get(`https://gxzh.cdht.gov.cn/api/v4/forms/${this.information.form_id}/responses`).then(res => {
         this.response = _.filter(res.data, item => item.id === this.information.response_id)
       })
     }
