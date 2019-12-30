@@ -45,7 +45,6 @@ export default {
 
   data () {
     return {
-      opened: false,
       currentFile: null,
       itemWidth: 0,
       index: 0
@@ -69,14 +68,6 @@ export default {
   methods: {
     indexChanged (index) {
       this.index = index
-    },
-
-    open () {
-      this.opened = true
-    },
-
-    cancelPreview () {
-      this.opened = false
     },
 
     canPreview (file) {

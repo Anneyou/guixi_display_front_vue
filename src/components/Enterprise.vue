@@ -63,7 +63,7 @@
       </div>
     </template>
   </Common>
-  <div class="layer-page">
+  <div class="layer-page" v-if="filePreviewShow">
     <div class="layer-header">
       <div class="layer-back" @click="closeFilePreviewFunc">
         <i class="icon-arrow_left"></i>
@@ -100,7 +100,8 @@ export default {
       responseUrl: '',
       companyQueryUrl: '',
       updateUrl: '',
-      showFiles: null
+      filePreviewShow: false,
+      showFiles: []
     }
   },
 
@@ -152,12 +153,12 @@ export default {
           default:
             this.showFiles = null
         }
-        this.$refs.filePreviewRef.open()
+        this.filePreviewShow = true
       })
     },
 
     closeFilePreviewFunc () {
-      this.$refs.filePreviewRef.cancelPreview()
+      this.filePreviewShow = false
     },
 
     downloadFile () {
