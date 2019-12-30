@@ -16,7 +16,7 @@
         <div class="attachment-type">
           <file class="file-icon" :fileName="file.value" />
         </div>
-        <h3 class="attachment-name force-break">{{ file.name }}</h3>
+        <h3 class="attachment-name force-break">{{ file.value }}</h3>
         <div class="attachment-size date-text">{{ file.humanSize }}</div>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default {
     return {
       currentFile: null,
       itemWidth: 0,
-      index: 0
+      index: 1
     }
   },
 
@@ -94,6 +94,7 @@ export default {
 <style scoped>
 .main-content {
   -webkit-box-flex: 0;
+  height: calc(100vh - 2.5rem);
 }
 
 .swipe-wrapper {
@@ -117,8 +118,9 @@ export default {
   height: 100%;
 }
 
-.real-file-containe img {
+.real-file-container img {
   max-height: 100%;
+  max-width: 100%;
 }
 
 .preview-container {
@@ -151,6 +153,6 @@ export default {
 }
 
 .file-icon {
-  font-size: 6rem;
+  font-size: 6rem !important;
 }
 </style>
