@@ -71,7 +71,7 @@
         </svg>
       </div>
       <div class="layer-content">
-        {{index}} / {{showFiles.length}}
+        {{index + 1}} / {{showFiles.length}}
       </div>
       <div class="layer-download" @click="downloadFile">
         <svg t="1577696122018" class="icon" viewBox="0 0 1024 1024"  width="100%" height="100%">
@@ -109,7 +109,7 @@ export default {
       updateUrl: '',
       filePreviewShow: false,
       showFiles: [],
-      index: 1
+      index: 0
     }
   },
 

@@ -48,7 +48,7 @@ export default {
   data () {
     return {
       currentFile: null,
-      currentIndex: 1
+      currentIndex: 0
     }
   },
 
