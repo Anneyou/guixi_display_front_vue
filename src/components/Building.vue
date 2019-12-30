@@ -76,7 +76,7 @@ export default {
 
 .community-home-body-item {
   height: 4.8rem;
-  width: 22%;
+  flex: 0 0 22%;
   background-color: white;
   padding: .6rem .4rem .4rem;
   box-sizing: border-box;
