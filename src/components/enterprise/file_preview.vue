@@ -55,7 +55,9 @@ export default {
   },
 
   mounted () {
-    this.itemWidth = this.$refs.swipeContainer.getBoundingClientRect().width
+    this.$nextTick(() => {
+      this.itemWidth = this.$refs.swipeContainer.getBoundingClientRect().width
+    })
   },
 
   watch: {
@@ -71,7 +73,7 @@ export default {
     },
 
     canPreview (file) {
-      const fileNameArray = this.fileName.split('.')
+      const fileNameArray = file.value.split('.')
       return _.includes(['png', 'jpg', 'jpeg'], fileNameArray[fileNameArray.length - 1])
     },
 
