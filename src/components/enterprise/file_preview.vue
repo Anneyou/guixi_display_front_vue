@@ -1,5 +1,4 @@
 
-
 <template>
 <div class="main-content"
   ref='swipeContainer'
@@ -49,7 +48,7 @@ export default {
       opened: false,
       currentFile: null,
       itemWidth: 0,
-      index: 0,
+      index: 0
     }
   },
 
@@ -62,14 +61,14 @@ export default {
   },
 
   watch: {
-    index (new_value) {
-      this.currentFile = this.files[new_value]
+    index (value) {
+      this.currentFile = this.files[value]
     }
   },
 
   methods: {
-    indexChanged (new_index) {
-      this.index = new_index
+    indexChanged (index) {
+      this.index = index
     },
 
     open () {
@@ -81,7 +80,7 @@ export default {
     },
 
     canPreview (file) {
-      file.extension === 'image'
+      return file.extension === 'image'
     },
 
     downloadFile () {
@@ -89,11 +88,11 @@ export default {
     },
 
     _downloadUrl (file) {
-      `https://gxzh.cdht.gov.cn/attachments/${file.id}/download_url`
+      return `https://gxzh.cdht.gov.cn/attachments/${file.id}/download_url`
     },
 
     _previewUrl (file) {
-      `https://gxzh.cdht.gov.cn/attachments/${file.id}/download_url?fops=imageView2/0/q/100|imageslim`
+      return `https://gxzh.cdht.gov.cn/attachments/${file.id}/download_url?fops=imageView2/0/q/100|imageslim`
     }
   }
 }

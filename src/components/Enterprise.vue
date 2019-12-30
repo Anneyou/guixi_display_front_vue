@@ -100,7 +100,6 @@ export default {
       responseUrl: '',
       companyQueryUrl: '',
       updateUrl: '',
-      response: {},
       showFiles: null
     }
   },
@@ -132,23 +131,23 @@ export default {
 
     fileClickedFunc (fileName) {
       axios.get(`https://gxzh.cdht.gov.cn/api/v4/forms/${this.information.form_id}/responses`).then(res => {
-        this.response = _.filter(res.data, item => item.id === this.information.response_id)
-        const mapped_values = response.mapped_values
+        const response = _.filter(res.data, item => item.id === this.information.response_id)
+        const mappedValues = response.mapped_values
         switch (fileName) {
-          case information.public_security_responsibility_letter:
-            this.showFiles = mapped_values.public_security_responsibility_letter.value
+          case this.information.public_security_responsibility_letter:
+            this.showFiles = mappedValues.public_security_responsibility_letter.value
             break
-          case information.roster:
-            this.showFiles = mapped_values.roster.value
+          case this.information.roster:
+            this.showFiles = mappedValues.roster.value
             break
-          case information.registration_form:
-            this.showFiles = mapped_values.registration_form.value
+          case this.information.registration_form:
+            this.showFiles = mappedValues.registration_form.value
             break
-          case information.work_unit_questionnaire:
-            this.showFiles = mapped_values.work_unit_questionnaire.value
+          case this.information.work_unit_questionnaire:
+            this.showFiles = mappedValues.work_unit_questionnaire.value
             break
-          case information.grid_work_traces:
-            this.showFiles = mapped_values.grid_work_traces.value
+          case this.information.grid_work_traces:
+            this.showFiles = mappedValues.grid_work_traces.value
             break
           default:
             this.showFiles = null
