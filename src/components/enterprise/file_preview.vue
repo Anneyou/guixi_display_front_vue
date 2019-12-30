@@ -14,16 +14,10 @@
       </div>
       <div class="preview-container" v-else>
         <div class="attachment-type">
-          <file-icon :type='file.extension' size='large' />
+          <file class="file-icon" :fileName="file.value" />
         </div>
         <h3 class="attachment-name force-break">{{ file.name }}</h3>
         <div class="attachment-size date-text">{{ file.humanSize }}</div>
-        <div class="progress-info" v-if='!file.id && !file._error_message'>
-          <div class="process-bar thin" :class='{ active: file._progress == 1 }'>
-            <div class="content" :style="{ width: (file._progress * 100).toFixed(2) + '%' }"></div>
-          </div>
-          <span class='gray-text text-small'>{{ (file._progress * 100).toFixed(0) + '%' }}</span>
-        </div>
       </div>
     </div>
   </div>
@@ -31,6 +25,9 @@
 </template>
 
 <script>
+import _ from 'lodash'
+import File from './File'
+
 export default {
   props: {
     enableDelete: {
@@ -42,6 +39,8 @@ export default {
       default: () => ([])
     }
   },
+
+  components: { File },
 
   data () {
     return {
@@ -68,10 +67,12 @@ export default {
   methods: {
     indexChanged (index) {
       this.index = index
+      this.$emit('indexChanged', index)
     },
 
     canPreview (file) {
-      return file.extension === 'image'
+      const fileNameArray = this.fileName.split('.')
+      return _.includes(['png', 'jpg', 'jpeg'], fileNameArray[fileNameArray.length - 1])
     },
 
     downloadFile () {
@@ -145,5 +146,9 @@ export default {
 .preview-container .attachment-size {
   line-height: 1.5rem;
   font-size: .65rem;
+}
+
+.file-icon {
+  font-size: 6rem;
 }
 </style>

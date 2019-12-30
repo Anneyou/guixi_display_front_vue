@@ -70,7 +70,9 @@
           <path d="M9.35 12l6.36 6.36a1 1 0 0 1-1.41 1.42l-7.02-7.02a1 1 0 0 1-.05-1.46l7.06-7.08a1 1 0 1 1 1.42 1.42L9.35 12z" fill="#fd7d58"></path>
         </svg>
       </div>
-      <div class="layer-content"></div>
+      <div class="layer-content">
+        {{index}} / {{showFiles.length}}
+      </div>
       <div class="layer-download" @click="downloadFile">
         <svg t="1577696122018" class="icon" viewBox="0 0 1024 1024"  width="100%" height="100%">
           <path d="M605.333333 772.672L533.333333 830.272V533.333333a21.333333 21.333333 0 0 0-42.666666 0v296.938667l-72-57.6a21.333333 21.333333 0 0 0-26.666667 33.322667l106.666667 85.333333a21.376 21.376 0 0 0 26.666666 0l106.666667-85.333333a21.333333 21.333333 0 1 0-26.666667-33.322667z" fill="#fd7d58" p-id="1900"></path>
@@ -79,7 +81,7 @@
       </div>
     </div>
     <div class="layer-body">
-      <file-preview ref="filePreviewRef" :files="showFiles">
+      <file-preview ref="filePreviewRef" :files="showFiles" @indexChanged="indexChangedFunc">
     </div>
   </div>
 </div>
@@ -106,7 +108,8 @@ export default {
       companyQueryUrl: '',
       updateUrl: '',
       filePreviewShow: false,
-      showFiles: []
+      showFiles: [],
+      index: 0
     }
   },
 
@@ -172,6 +175,9 @@ export default {
 
     downloadFile () {
       this.$refs.filePreviewRef.downloadFile()
+    },
+    indexChangedFunc (index) {
+      this.index = index
     }
   }
 }
@@ -278,6 +284,8 @@ export default {
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
   position: relative;
   top: 0;
+  height: 2.5rem;
+  padding: 0 2.65rem;
 }
 
 .layer-back {
@@ -288,6 +296,7 @@ export default {
 .layer-content {
   flex: auto;
   color: #2e2e2e;
+  font-size: 1rem;
 }
 
 .layer-download {
