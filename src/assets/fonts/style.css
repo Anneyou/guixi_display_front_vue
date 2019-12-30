@@ -51,3 +51,9 @@ i {
 .icon-icon_dong:before {
   content: "\e901";
 }
+.icon-arrow_left:before {
+  content: "\e9d4";
+}
+.icon-download_o:before {
+  content: "\e9b7";
+};

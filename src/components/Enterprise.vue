@@ -1,4 +1,5 @@
 <template>
+<div>
   <Common :companyName="baseCompany">
     <template slot="communityBreadcrumns">
       <div class="description">{{ baseDescription }}</div>
@@ -62,6 +63,18 @@
       </div>
     </template>
   </Common>
+  <div class="layer-page">
+    <div class="layer-header">
+      <div class="layer-back">
+        <i class="icon-arrow_left"></i>
+      </div>
+      <div class="layer-content"></div>
+      <div class="layer-download">
+        <i class="icon-download_o"></i>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -203,5 +216,38 @@ export default {
   background: linear-gradient(#f08200, #f45e06);
   margin: 1.2rem 0 1.6rem;
   border-radius: .3rem;
+}
+
+.layer-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background-color: #ffffff;
+}
+
+.layer-header {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+  position: relative;
+  top: 0;
+}
+
+.layer-back {
+  color: #fd7d58;
+  font-size: 1.05rem;
+}
+
+.layer-content {
+  flex: auto;
+  color: #2e2e2e;
+}
+
+.layer-download {
+  color: #fd7d58;
+  font-size: 1.05rem;
 }
 </style>
