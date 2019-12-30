@@ -31,11 +31,6 @@
               <div class="body-table-wrapper">
                 <div class="scroll-container" @scroll="scrollBody" ref="bodyScrollContainer">
                   <table>
-                    <colgroup>
-                      <template v-for="(room, index) in houses">
-                        <col :key="index" width="30">
-                      </template>
-                    </colgroup>
                     <tbody>
                       <template v-for="(floor, index) in floors">
                         <tr :key="index">
