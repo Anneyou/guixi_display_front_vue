@@ -37,14 +37,19 @@ export default {
     enableDelete: {
       type: Boolean,
       default: true
+    },
+    files: {
+      type: Array,
+      default: () => ([])
     }
   },
 
   data () {
     return {
-      opened: true,
+      opened: false,
       currentFile: null,
-      itemWidth: 0
+      itemWidth: 0,
+      index: 0,
     }
   },
 
@@ -63,10 +68,6 @@ export default {
   },
 
   methods: {
-    filesChanged (new_files) {
-      this.files = new_files
-    },
-
     indexChanged (new_index) {
       this.index = new_index
     },
@@ -88,11 +89,11 @@ export default {
     },
 
     _downloadUrl (file) {
-      "https://gxzh.cdht.gov.cn/attachments/#{ file.id }/download_url"
+      `https://gxzh.cdht.gov.cn/attachments/${file.id}/download_url`
     },
 
     _previewUrl (file) {
-      "https://gxzh.cdht.gov.cn/attachments/#{ file.id }/download_url?fops=#{ Skylark.Libs.Qiniu.styles.print }"
+      `https://gxzh.cdht.gov.cn/attachments/${file.id}/download_url?fops=imageView2/0/q/100|imageslim`
     }
   }
 }

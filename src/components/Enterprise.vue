@@ -65,7 +65,7 @@
   </Common>
   <div class="layer-page">
     <div class="layer-header">
-      <div class="layer-back">
+      <div class="layer-back" @click="closeFilePreviewFunc">
         <i class="icon-arrow_left"></i>
       </div>
       <div class="layer-content"></div>
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="layer-body">
-
+      <file-preview ref="filePreviewRef" :files="showFiles">
     </div>
   </div>
 </div>
@@ -101,11 +101,11 @@ export default {
       companyQueryUrl: '',
       updateUrl: '',
       response: {},
-      showFiles: {}
+      showFiles: null
     }
   },
 
-  components: { Common, File },
+  components: { Common, File, FilePreview },
 
   created () {
     this.doRequst()
@@ -125,6 +125,7 @@ export default {
         })
         .catch(err => { console.log(err) })
     },
+
     goToUrl (url) {
       location.href = url
     },
@@ -150,9 +151,14 @@ export default {
             this.showFiles = mapped_values.grid_work_traces.value
             break
           default:
-            this.showFiles = {}
+            this.showFiles = null
         }
+        this.$refs.filePreviewRef.open()
       })
+    },
+
+    closeFilePreviewFunc () {
+      this.$refs.filePreviewRef.cancelPreview()
     }
   }
 }
