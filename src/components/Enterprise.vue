@@ -73,6 +73,9 @@
         <i class="icon-download_o"></i>
       </div>
     </div>
+    <div class="layer-body">
+
+    </div>
   </div>
 </div>
 </template>
@@ -83,6 +86,7 @@ import Common from './Common'
 import axios from 'axios'
 import Mixin from './Mixin'
 import File from './enterprise/File'
+import FilePreview from './enterprise/file_preview'
 
 export default {
   mixins: [ Mixin ],
@@ -131,19 +135,19 @@ export default {
         const mapped_values = response.mapped_values
         switch (fileName) {
           case information.public_security_responsibility_letter:
-            this.showFiles = mapped_values.public_security_responsibility_letter
+            this.showFiles = mapped_values.public_security_responsibility_letter.value
             break
           case information.roster:
-            this.showFiles = mapped_values.roster
+            this.showFiles = mapped_values.roster.value
             break
           case information.registration_form:
-            this.showFiles = mapped_values.registration_form
+            this.showFiles = mapped_values.registration_form.value
             break
           case information.work_unit_questionnaire:
-            this.showFiles = mapped_values.work_unit_questionnaire
+            this.showFiles = mapped_values.work_unit_questionnaire.value
             break
           case information.grid_work_traces:
-            this.showFiles = mapped_values.grid_work_traces
+            this.showFiles = mapped_values.grid_work_traces.value
             break
           default:
             this.showFiles = {}
