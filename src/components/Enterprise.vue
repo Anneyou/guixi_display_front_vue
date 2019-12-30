@@ -109,7 +109,7 @@ export default {
       updateUrl: '',
       filePreviewShow: false,
       showFiles: [],
-      index: 0
+      index: 1
     }
   },
 

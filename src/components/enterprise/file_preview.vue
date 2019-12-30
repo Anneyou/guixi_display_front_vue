@@ -3,7 +3,7 @@
 <div class="main-content"
   ref='swipeContainer'
   v-swipe='{ length: files.length, currentIndex: index, itemWidth: itemWidth, indexChanged: indexChanged }'>
-  <div class="swipe-wrapper" :style="{ width: files.length * 100 + '%' }">
+  <div class="swipe-wrapper" ref="swipeWrapperRef" :style="{ width: files.length * 100 + '%' }">
     <div class="swipe-item content-centered"
           :style='{ width: (1/files.length * 100).toFixed(6) + "%" }'
           v-for='file in files'
@@ -27,8 +27,11 @@
 <script>
 import _ from 'lodash'
 import File from './File'
+import FilePreviewMixin from '../mixins/swipe'
 
 export default {
+  mixins: [FilePreviewMixin],
+
   props: {
     enableDelete: {
       type: Boolean,
@@ -45,30 +48,23 @@ export default {
   data () {
     return {
       currentFile: null,
-      itemWidth: 0,
-      index: 1
+      currentIndex: 1
     }
   },
 
   created () {
-    this.currentFile = this.files[this.index]
-  },
-
-  mounted () {
-    this.$nextTick(() => {
-      this.itemWidth = this.$refs.swipeContainer.getBoundingClientRect().width
-    })
+    this.currentFile = this.files[this.currentIndex]
   },
 
   watch: {
-    index (value) {
+    currentIndex (value) {
       this.currentFile = this.files[value]
     }
   },
 
   methods: {
     indexChanged (index) {
-      this.index = index
+      this.currentIndex = index
       this.$emit('indexChanged', index)
     },
 
