@@ -69,7 +69,7 @@
         <i class="icon-arrow_left"></i>
       </div>
       <div class="layer-content"></div>
-      <div class="layer-download">
+      <div class="layer-download" @click="downloadFile">
         <i class="icon-download_o"></i>
       </div>
     </div>
@@ -159,6 +159,10 @@ export default {
 
     closeFilePreviewFunc () {
       this.$refs.filePreviewRef.cancelPreview()
+    },
+
+    downloadFile () {
+      this.$refs.filePreviewRef.downloadFile()
     }
   }
 }
