@@ -66,11 +66,16 @@
   <div class="layer-page" v-if="filePreviewShow">
     <div class="layer-header">
       <div class="layer-back" @click="closeFilePreviewFunc">
-        <i class="icon-arrow_left"></i>
+        <svg viewbox="0 0 24 24" width="100%" height="100%">
+          <path d="M9.35 12l6.36 6.36a1 1 0 0 1-1.41 1.42l-7.02-7.02a1 1 0 0 1-.05-1.46l7.06-7.08a1 1 0 1 1 1.42 1.42L9.35 12z" fill="#fd7d58"></path>
+        </svg>
       </div>
       <div class="layer-content"></div>
       <div class="layer-download" @click="downloadFile">
-        <i class="icon-download_o"></i>
+        <svg t="1577696122018" class="icon" viewBox="0 0 1024 1024"  width="100%" height="100%">
+          <path d="M605.333333 772.672L533.333333 830.272V533.333333a21.333333 21.333333 0 0 0-42.666666 0v296.938667l-72-57.6a21.333333 21.333333 0 0 0-26.666667 33.322667l106.666667 85.333333a21.376 21.376 0 0 0 26.666666 0l106.666667-85.333333a21.333333 21.333333 0 1 0-26.666667-33.322667z" fill="#fd7d58" p-id="1900"></path>
+          <path d="M810.666667 384c-1.130667 0-2.24 0-3.328 0.042667a298.496 298.496 0 0 0-565.418667-84.906667A213.333333 213.333333 0 0 0 256 725.333333h21.333333a21.333333 21.333333 0 0 0 0-42.666666h-21.333333a170.666667 170.666667 0 0 1 0-341.333334 21.333333 21.333333 0 0 0 19.712-13.12 255.786667 255.786667 0 0 1 491.370667 80.832 21.333333 21.333333 0 0 0 24.533333 19.626667A124.224 124.224 0 0 1 810.666667 426.666667a128 128 0 0 1 0 256h-64a21.333333 21.333333 0 0 0 0 42.666666h64a170.666667 170.666667 0 0 0 0-341.333333z" fill="#646464" p-id="1901"></path>
+        </svg>
       </div>
     </div>
     <div class="layer-body">
@@ -136,7 +141,7 @@ export default {
           Authorization: '7372dee4ff2e6b3876e3b386a336a9171444fba5d3a1e5ae3e23c91d92bb68c6:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lc3BhY2VfaWQiOjF9.WXenxuBIxXEgy_YSmk-PRoElIK7f_gP995N5vdCqSAo'
         }
       }).then(res => {
-        const response = _.filter(res.data, item => item.id === this.information.response_id)
+        const response = _.find(res.data, item => item.id === this.information.response_id)
         const mappedValues = response.mapped_values
         switch (fileName) {
           case this.information.public_security_responsibility_letter:
@@ -276,8 +281,8 @@ export default {
 }
 
 .layer-back {
-  color: #fd7d58;
-  font-size: 1.05rem;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 .layer-content {
@@ -286,7 +291,7 @@ export default {
 }
 
 .layer-download {
-  color: #fd7d58;
-  font-size: 1.05rem;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 </style>
