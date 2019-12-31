@@ -31,12 +31,20 @@ export default {
   },
 
   created () {
-    axios.get(`https://gxzh.cdht.gov.cn/api/v4/users/${localStorage.getItem('userId')}`, {
-      headers: {
-        Authorization: '7372dee4ff2e6b3876e3b386a336a9171444fba5d3a1e5ae3e23c91d92bb68c6:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lc3BhY2VfaWQiOjF9.WXenxuBIxXEgy_YSmk-PRoElIK7f_gP995N5vdCqSAo'
-      }
+    axios.post(`https://gxzh.cdht.gov.cn/oauth/token`, {
+      code: localStorage.getItem('code')
     }).then(res => {
-      this.canEdit = !!(_.find(res.data.tags, tag => tag.name === '网格员'))
+      axios.get('https://gxzh.cdht.gov.cn/api/v1/user', {
+        access_token: res.data.access_token
+      }).then(user => {
+        axios.get(`https://gxzh.cdht.gov.cn/api/v4/users/${user.data.id}`, {
+          headers: {
+            Authorization: '7372dee4ff2e6b3876e3b386a336a9171444fba5d3a1e5ae3e23c91d92bb68c6:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lc3BhY2VfaWQiOjF9.WXenxuBIxXEgy_YSmk-PRoElIK7f_gP995N5vdCqSAo'
+          }
+        }).then(userMessage => {
+          this.canEdit = !!(_.find(userMessage.data.tags, tag => tag.name === '网格员'))
+        })
+      })
     })
   },
 
