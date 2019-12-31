@@ -171,6 +171,7 @@ export default {
 
     closeFilePreviewFunc () {
       this.filePreviewShow = false
+      this.index = 0
     },
 
     downloadFile () {

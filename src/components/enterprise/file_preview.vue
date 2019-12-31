@@ -91,6 +91,7 @@ export default {
 .main-content {
   -webkit-box-flex: 0;
   height: calc(100vh - 2.5rem);
+  overflow: hidden;
 }
 
 .swipe-wrapper {
