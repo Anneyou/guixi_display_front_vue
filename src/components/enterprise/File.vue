@@ -46,6 +46,12 @@ export default {
         case 'word':
           icon = 'icon-Icon_word'
           break
+        case 'docx':
+          icon = 'icon-Icon_word'
+          break
+        case 'doc':
+          icon = 'icon-Icon_word'
+          break
         default:
           icon = 'icon-Icon_file'
       }

@@ -142,6 +142,7 @@ export default {
 
 .preview-container .attachment-name {
   font-weight: normal;
+  font-size: 0.85rem;
 }
 
 .preview-container .attachment-size {
@@ -149,7 +150,7 @@ export default {
   font-size: .65rem;
 }
 
-.file-icon {
-  font-size: 6rem !important;
+.file-icon .file-icon {
+  font-size: 6rem;
 }
 </style>
