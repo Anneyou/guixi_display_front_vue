@@ -114,7 +114,7 @@ export default {
     },
 
     _disableTransition () {
-      if (typeof(this.indexChanged) === 'function') {
+      if (typeof (this.indexChanged) === 'function') {
         this.indexChanged(this.currentIndex)
       }
       return _.extend(this.wrapper.style, {

@@ -1,10 +1,16 @@
 <template>
-  <a @click="fileClickedFunc">
+  <a :href="responseUrl" v-if="canEdit">
+    <i class="file-icon" :class="file.icon"></i>
+  </a>
+  <a @click="fileClickedFunc" v-else>
     <i class="file-icon" :class="file.icon"></i>
   </a>
 </template>
 
 <script>
+import _ from 'lodash'
+import axios from 'axios'
+
 export default {
   props: {
     fileName: {
@@ -19,8 +25,15 @@ export default {
     return {
       file: {
         icon: this.getIcon()
-      }
+      },
+      canEdit: false
     }
+  },
+
+  created () {
+    axios.get(`${this.baseUrl}api/v4/users?id=${localStorage.getItem('userId')}`).then(res => {
+      this.canEdit = !!(_.find(res.data.tags, tag => tag.name === '网格员'))
+    })
   },
 
   methods: {
