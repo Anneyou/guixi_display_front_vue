@@ -25,7 +25,6 @@ export default {
   methods: {
     goToUrlFunc () {
       this.code = this.parseStringToObject(this.getQueryString()).code
-      localStorage.setItem('code', this.code)
       axios.get(this.baseUrl + 'authorized?code=' + this.code)
         .then(res => {
           let authorize = this.getAuthorizeFunc(res.data)
