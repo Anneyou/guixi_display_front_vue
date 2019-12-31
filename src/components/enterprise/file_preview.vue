@@ -87,7 +87,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .main-content {
   -webkit-box-flex: 0;
   height: calc(100vh - 2.5rem);
@@ -129,8 +129,8 @@ export default {
 }
 
 .preview-container .attachment-type {
-  width: 4.75rem;
-  height: 5.6rem;
+  width: 6rem;
+  height: 6rem;
   align-self: center;
   margin: 0;
   margin-bottom: .8rem;
@@ -150,7 +150,7 @@ export default {
   font-size: .65rem;
 }
 
-.file-icon .file-icon {
-  font-size: 6rem;
+.file-icon i {
+  font-size: 6rem !important;
 }
 </style>

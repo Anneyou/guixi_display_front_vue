@@ -31,7 +31,11 @@ export default {
   },
 
   created () {
-    axios.get(`${this.baseUrl}api/v4/users?id=${localStorage.getItem('userId')}`).then(res => {
+    axios.get(`https://gxzh.cdht.gov.cn/api/v4/users/${localStorage.getItem('userId')}`, {
+      headers: {
+        Authorization: '7372dee4ff2e6b3876e3b386a336a9171444fba5d3a1e5ae3e23c91d92bb68c6:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lc3BhY2VfaWQiOjF9.WXenxuBIxXEgy_YSmk-PRoElIK7f_gP995N5vdCqSAo'
+      }
+    }).then(res => {
       this.canEdit = !!(_.find(res.data.tags, tag => tag.name === '网格员'))
     })
   },
@@ -84,5 +88,4 @@ export default {
   font-size: 1rem;
   color: black;
 }
-
 </style>
